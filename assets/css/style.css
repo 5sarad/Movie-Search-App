@@ -73,3 +73,15 @@ html {
    width: 80px;
   }
   
+
+
+
+
+
+  .banner {
+    position: relative;
+    height: 700px;
+    border-radius: var(--radius-24);
+    overflow: hidden;
+  }
+  

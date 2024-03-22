@@ -23,7 +23,62 @@
     <main>
         <div class="overlay" overlay menu-toggler></div>
 
-         <article class="container" page-content></article>
+         <article class="container" page-content>
+            <section class="banner">
+                 <div class="banner-slider">
+                    <div class="slider-item" slider-item="">
+                        <img src="${imageBaseURL}w1280${backdrop_path}" alt="${title}" class="img-cover" loading=${index === 0 ? "eager" : "lazy"
+      
+                            <div class="banner-content">
+                            
+                                <h2 class="heading">Kung Fu panda 4</h2>
+                            
+                                <div class="meta-list">
+                                <div class="release-date">2024</div>
+                            
+                                <div class="rating">6.0</div>
+                                </div>
+                            
+                                <p class="genre">Action, Adeventure, Animation, Comedy</p>
+                            
+                                <p class="banner-text">Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as</p>
+                            
+                                <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})">
+                                    <img src="./assets/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+                                    <span class="span">Watch Now</span>
+                                </a>
+                            
+                            </div>
+
+                    </div>
+                 </div>
+            </section>
+            <section class="movie-list">
+                <div class="title-wrapper">
+                    <h3>Upcoming Movies</h3>
+                  </div>
+                    <div class="slider-inner">
+                        <figure class="movie-list-image">
+                            <img src="${imageBaseURL}w342${poster_path}" alt="${title}" class="img-cover" loading="lazy">
+                          </figure>
+                          
+                          <h4 class="title">Kung Fu panda 4</h4>
+                          
+                          <div class="meta-list">
+                            <div class="rating">
+                              <img src="./assets/images/star.png" width="20" height="20" loading="lazy" alt="rating">
+                              <span class="span"</span>
+                            </div>
+                            <div class="release-year">2024</div>
+                          </div>
+                          
+                          <a href="./detail.html" class="card-btn" title="${title}" onclick="getMovieDetail(${id})"></a>
+                    </div>
+                 
+            </section>
+
+
+         </article>
       </main>
 </body>
 </html>

@@ -83,5 +83,16 @@ genres.forEach(genre => {
 
 
 
+document.querySelectorAll(".nav-list a").forEach(link => {
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        const category = this.textContent.trim();
+        localStorage.setItem("clickedCategory", category);
+        window.location.href = "movie_list.html";
+    });
+});
+
+
+
 
 

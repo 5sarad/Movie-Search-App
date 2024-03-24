@@ -139,6 +139,7 @@ html {
     border-radius: var(--radius-24);
     overflow: hidden;
     margin: 1rem;
+    margin-bottom: 5rem;
   }
   .banner-item{
     position: absolute;

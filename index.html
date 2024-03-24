@@ -6,6 +6,7 @@
     <title>Movie Search App</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script defer src="./assets/js/app.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,78 +14,66 @@
 </head>
 <body>
     <header>
-       
         <a href="index.html" class="logo"><img src="./assets/icons/—Pngtree—modern film movie search logo_5289241(1).png" alt=""></a>
-        <form action="">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input placeholder="Search Movie..." type="search" name="search" id="search" >
-        </form>
+        <div class="nav-list">
+          <a href="./index.html">Home</a>
+          <a href="./movie_list.html">Top Rated</a>
+          <a href="./movie_list.html">Weekly Trending</a>
+          <a href="./movie_list.html">Upcoming</a>
+        </div>
+            <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+             <input class="search-field" placeholder="Search Movie..." type="search" name="search" id="search" >
+            </div>
+        
     </header>
     <main>
         <div class="overlay" overlay menu-toggler></div>
 
          <article class="container" page-content>
             <section class="banner">
-                 <div class="banner-slider">
-                    <div class="slider-item" slider-item="">
-                        <img src="./assets/images/images/slider-banner.jpg" alt="${title}" class="img-cover" loading=${index === 0 ? "eager" : "lazy"
-      
-                            <div class="banner-content">
-                            
-                                <h2 class="heading">Kung Fu panda 4</h2>
-                            
-                                <div class="meta-list">
+                <div class="banner-item">
+                    <img src="./assets/images/images/slider-banner.jpg" alt="${title}" class="img-cover" loading="${index === 0 ? "eager" : "lazy"}">
+                        <div class="banner-content">
+                            <h2 class="heading">Kung Fu panda 4</h2>
+                            <div class="meta-list">
                                 <div class="release-date">2024</div>
-                            
-                                <div class="rating">6.0</div>
-                                </div>
-                            
-                                <p class="genre">Action, Adeventure, Animation, Comedy</p>
-                            
-                                <p class="banner-text">Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as</p>
-                            
-                                <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})">
-                                    <img src="./assets/images/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
-                                    <span class="span">Watch Now</span>
-                                </a>
+                                <div class="rating card-badge">6.0</div>
                             </div>
+                            <p class="genre">Action, Adeventure, Animation, Comedy</p>
+                            <p class="banner-text">Po is gearing up to become the spiritual leader of his Valley of Peace, but also needs someone to take his place as</p>
+                            <a href="./detail.html" class="btn" onclick="getMovieDetail(${id})">
+                                <img src="./assets/images/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+                                <span class="span">Watch Now</span>
+                            </a>
+                        </div>
+              
+                </div>
+                <div class="banner-slider">
+                    <div class="banner-inner">
+                        <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4" loading="lazy" draggable="false" class="img-cover">
                     </div>
-                 </div>
+                    <div class="banner-inner">
+                        <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4" loading="lazy" draggable="false" class="img-cover">
+                    </div> 
+                    <div class="banner-inner">
+                        <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4" loading="lazy" draggable="false" class="img-cover">
+                    </div>
+                    <div class="banner-inner">
+                        <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4"  class="img-cover">
+                    </div>
 
-                 <div class="slider-control">
-                    <div class="control-inner">
-                        <button class="poster-box slider-item active" slider-control="0">
-                            <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4" loading="lazy" draggable="false" class="img-cover">
-                          </button>
+                    <div class="banner-inner">
+                        <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4" loading="lazy" draggable="false" class="img-cover">
                     </div>
-                  </div>
-
-            </section>
-            <section class="movie-list">
-                <div class="title-wrapper">
-                    <h3>Upcoming Movies</h3>
-                  </div>
-                    <div class="slider-inner">
-                        <figure class="movie-list-image">
-                            <img src="./assets/images/images/slider-control.jpg" alt="${title}" class="img-cover" loading="lazy">
-                          </figure>
-                          
-                          <h4 class="title">Kung Fu panda 4</h4>
-                          
-                          <div class="meta-list">
-                            <div class="rating">
-                              <img src="./assets/images/images/star.png" width="20" height="20" loading="lazy" alt="rating">
-                              <span class="span"</span>
-                            </div>
-                            <div class="release-year">2024</div>
-                          </div>
-                          
-                          <a href="./detail.html" class="card-btn" title="${title}" onclick="getMovieDetail(${id})"></a>
+                    <div class="banner-inner">
+                        <img src="./assets/images/images/slider-control.jpg" alt="Slide to Kung Fu Panda 4"  class="img-cover">
                     </div>
-                 
+   
+                </div>
             </section>
 
-
+            <div class="slider-content-container"></div>
          </article>
       </main>
 </body>

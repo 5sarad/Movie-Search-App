@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const img_url = 'https://image.tmdb.org/t/p/w500';
     const searchURL = `${base_url}/search/movie?${api_key}`;
 
+  
+
     const movieListContent = document.querySelector(".movie-list-content");
     const heading = document.querySelector(".heading");
     const detailBox = document.querySelector(".detail-box");

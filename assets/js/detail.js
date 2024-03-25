@@ -12,6 +12,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const movieId = localStorage.getItem("movieId");
 showMovieDetail(movieId);
+const getGenres = function (genreList) {
+    const newGenreList = [];
+  
+    for (const { name } of genreList) newGenreList.push(name);
+  
+    return newGenreList.join(", ");
+  }
+  
+  const getCasts = function (castList) {
+    const newCastList = [];
+  
+    for (let i = 0, len = castList.length; i < len && i < 10; i++) {
+      const { name } = castList[i];
+      newCastList.push(name);
+    }
+  
+    return newCastList.join(", ");
+  }
+  
+/*   const getDirectors = function (crewList) {
+    const directors = crewList.filter(({ job }) => job === "Director");
+  
+    const directorList = [];
+    for (const { name } of directors) directorList.push(name);
+  
+    return directorList.join(", ");
+  }
+   */
 function showMovieDetail(movieId) {
     fetch(`${base_url}/movie/${movieId}?${api_key}&append_to_response=casts,videos,images,releases`)
         .then(response => response.json())
@@ -50,16 +78,16 @@ function showMovieDetail(movieId) {
                             <div class="meta-item">${release_date?.split("-")[0] ?? "Not Released"}</div>
                             <div class="meta-item card-badge">${certification}</div>
                         </div>
-                        <p class="genre">${genres.join(", ")}</p>
+                        <p class="genre">${getGenres(genres)}</p>
                         <p class="overview">${overview}</p>
                         <ul class="detail-list">
                             <li class="list-item">
                                 <p class="list-name">Starring</p>
-                                <p>${cast?.map(actor => actor.name).join(", ")}</p>
+                                <p>${getCasts(cast)}</p>
                             </li>
                             <li class="list-item">
                                 <p class="list-name">Directed By</p>
-                                <p>${crew?.map(crewMember => crewMember.name).join(", ")}</p>
+                                <p></p>
                             </li>
                         </ul>
                     </div>

@@ -51,7 +51,7 @@ function showMovies(data, genreId){
     const sliderInner = document.createElement('div');
     sliderInner.classList.add('slider-inner');
     data.forEach(movie => {
-        const {title, release_date, poster_path, vote_average} = movie;
+        const {id, title, release_date, poster_path, vote_average} = movie;
         const movieElement = document.createElement("div");
         movieElement.classList.add("movie-card");
         movieElement.innerHTML = `
@@ -70,6 +70,7 @@ function showMovies(data, genreId){
                             </div>                 
         
                              `;
+                             
         sliderInner.appendChild(movieElement);
     });
 
@@ -90,6 +91,13 @@ document.querySelectorAll(".nav-list a").forEach(link => {
         localStorage.setItem("clickedCategory", category);
         window.location.href = "movie_list.html";
     });
+   const movies = document.querySelectorAll(".slider-content-container")
+   movies.forEach((movie) => {
+    movie.addEventListener("click", () =>{
+    
+        window.location.href = "detail.html";
+    })
+   })
 });
 
 

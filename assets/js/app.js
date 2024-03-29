@@ -1,6 +1,8 @@
 const base_url = 'https://api.themoviedb.org/3';
 const api_key = 'api_key=b83f25f146a98f219595e92e0cdaaadb';
 const img_url = 'https://image.tmdb.org/t/p/w500';
+const imageBaseURL = 'https://image.tmdb.org/t/p/';
+const container = document.querySelector(".container");
 
 const genres = [
     { "id": 28, "name": "Action" },
@@ -70,6 +72,10 @@ function showMovies(data, genreId){
                             </div>                 
         
                              `;
+                             movieElement.addEventListener("click", () =>{
+                                localStorage.setItem("movieId", id);
+                                window.location.href = "detail.html";
+                             })
                              
         sliderInner.appendChild(movieElement);
     });
@@ -82,7 +88,91 @@ genres.forEach(genre => {
     getMoviesByGenre(genre.id);
 });
 
+const sliderMovies = [];
 
+function showBannerMovie(movie) {
+    const { id, title, release_date, poster_path, vote_average, genre_ids, overview } = movie;
+    const bannerItem = document.createElement("div");
+    bannerItem.classList.add("banner-item");
+    bannerItem.innerHTML = `
+        <img src="${img_url}${poster_path}" alt="${title}" class="img-cover" loading="lazy">
+        <div class="banner-content">
+            <h2 class="heading">${title}</h2>
+            <div class="meta-list">
+                <div class="release-date">${release_date.split('-')[0]}</div>
+                <div class="rating card-badge">${vote_average.toFixed(1)}</div>
+            </div>
+            <p class="genre">${genre_ids.map(genreId => genres.find(genre => genre.id === genreId)?.name).join(", ")}</p>
+            <p class="banner-text">${overview}</p>
+            <button id="watch-now-button" class="btn" data-movie-id="${id}">
+            <img src="./assets/images/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+            <span class="span">Watch Now</span>
+        </button>
+        </div>`;
+
+   
+        document.querySelector(".banner-movies").appendChild(bannerItem);
+        
+}
+function showBannerSliderMovies(movies) {
+    const bannerSlider = document.querySelector(".banner-slider");
+    movies.forEach((movie, index) => {
+        const { id, title, poster_path } = movie;
+        const bannerInner = document.createElement("div");
+        bannerInner.classList.add("banner-inner");
+        if (index === 0) {
+            bannerInner.classList.add("active");
+            showBannerMovieDetails(id); 
+        }
+        bannerInner.innerHTML = `
+            <img src="${img_url}${poster_path}" alt="${title}" loading="lazy" draggable="false" class="img-cover">`;
+        bannerInner.addEventListener("click", () => {
+            document.querySelectorAll(".banner-inner").forEach(item => item.classList.remove("active"));
+            bannerInner.classList.add("active");
+            showBannerMovieDetails(id); 
+        });
+        bannerSlider.appendChild(bannerInner);
+        
+    });
+}
+
+function showBannerMovieDetails(movieId) {
+    const clickedMovie = sliderMovies.find(movie => movie.id === movieId);
+    const bannerItem = document.createElement("div");
+    bannerItem.classList.add("banner-item");
+    bannerItem.innerHTML = `
+        <img src="${img_url}${clickedMovie.backdrop_path}" alt="${clickedMovie.title}" class="img-cover" loading="lazy">
+        <div class="banner-content">
+            <h2 class="heading">${clickedMovie.title}</h2>
+            <div class="meta-list">
+                <div class="release-date">${clickedMovie.release_date.split('-')[0]}</div>
+                <div class="rating card-badge">${clickedMovie.vote_average.toFixed(1)}</div>
+            </div>
+            <p class="genre">${clickedMovie.genre_ids.map(genreId => genres.find(genre => genre.id === genreId)?.name).join(", ")}</p>
+            <p class="banner-text">${clickedMovie.overview}</p>
+            <button id="watch-now-button" class="btn" data-movie="${clickedMovie.id}">
+                <img src="./assets/images/images/play_circle.png" width="24" height="24" aria-hidden="true" alt="play circle">
+                Watch Now
+            </button>
+        </div>`;
+        document.querySelector(".banner-movies").innerHTML = ''; 
+        document.querySelector(".banner-movies").appendChild(bannerItem); 
+       
+}
+
+function getMoviesForBanner() {
+    const url = `${base_url}/movie/top_rated?${api_key}`;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        const [firstMovie, ...remainingMovies] = data.results;
+        showBannerMovie(firstMovie);
+        sliderMovies.push(...remainingMovies); // Add remaining movies to sliderMovies array
+        showBannerSliderMovies(sliderMovies);
+    });
+}
+
+getMoviesForBanner();
 
 document.querySelectorAll(".nav-list a").forEach(link => {
     link.addEventListener("click", function(event) {
@@ -91,16 +181,17 @@ document.querySelectorAll(".nav-list a").forEach(link => {
         localStorage.setItem("clickedCategory", category);
         window.location.href = "movie_list.html";
     });
-   const movies = document.querySelectorAll(".slider-content-container")
-   movies.forEach((movie) => {
-    movie.addEventListener("click", () =>{
-    
-        window.location.href = "detail.html";
-    })
-   })
+   
 });
 
-
+document.addEventListener("click", function(event) {
+    if (event.target && event.target.id === "watch-now-button") {
+        const movieId = event.target.dataset.movie;
+        localStorage.setItem("movieId", movieId);
+        window.location.href = "detail.html";
+        console.log(movieId);
+    }
+});
 
 
 

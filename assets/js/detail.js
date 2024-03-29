@@ -125,9 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
             url = `${base_url}/trending/movie/week?${api_key}`;
         } else if (clickedCategory === "Upcoming") {
             url = `${base_url}/movie/upcoming?${api_key}`;
-        } else if (clickedCategory === "Home"){
-            window.location.href = "index.html";
-        }
+        } 
      
     }
 });

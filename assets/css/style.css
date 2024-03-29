@@ -135,17 +135,21 @@ html {
 
   .banner {
     position: relative;
-   height: 700px;
+    height: 500px;
     border-radius: var(--radius-24);
     overflow: hidden;
     margin: 1rem;
     margin-bottom: 5rem;
+    
   }
+
   .banner-item{
     position: absolute;
     width: 100%;
     height: 100%;
+    
   }
+ 
   .img-cover{
     width: 100%;
     height: 100%;
@@ -154,11 +158,13 @@ html {
 
 .banner-content{
   position: absolute;
+  top: 40px;
   left: 48px;
   bottom: 206px;
   z-index: 1;
   color: var(--text-color);
   max-width: 500px;
+  
 }
 .banner-content .heading{
   color: var(--white);
@@ -195,17 +201,18 @@ html {
 }
 .banner .btn {
   background-color: var(--primary);
+  border: none;
 }
 
 .banner-slider {
   height: 160px;
   position: absolute;
-  left: 300px;
+  left: 600px;
   bottom: 20px;
   right: 0;
   border-radius: var(--radius-16) 0 0 var(--radius-16);
   padding: 4px 0 4px 4px;
-  overflow: hidden ;
+  overflow-x: overlay;
   white-space: nowrap;
   display: flex;
   gap: 12px;
@@ -219,9 +226,15 @@ html {
  flex: 0 0 auto;
 }
 .banner-inner img{
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   border-radius: var(--radius-8);
  
+}
+.banner-inner.active {
+  border: 1px solid red; 
+  filter: brightness(1);
+  
 }
 
 .movie-list {

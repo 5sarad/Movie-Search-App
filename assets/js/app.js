@@ -194,4 +194,15 @@ document.addEventListener("click", function(event) {
 });
 
 
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("keyup", ()=>{
+    const inputValue = searchInput.value;
+ if (inputValue.trim() !== ""){
+    const searchElement = document.querySelector(".container");
+    searchElement.innerHTML = "";
+ } else {
+    searchInput.value = "";
+ }
+
+})
 
